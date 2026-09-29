@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bom Café | Login</title>
+    <link rel="stylesheet" th:href="@{/css/modal.css}">
+</head>
+<body class="login-page">
+    <div class="login-card">
+        <div class="brand-icon">
+            <span>☕</span>
+        </div>
+
+        <div class="brand-title">BOM CAFÉ</div>
+
+        <h1>Entrar</h1>
+        <p class="subtitle">Bom te ver de novo. Sua próxima xícara está esperando.</p>
+
+        <form th:action="@{/login}" method="post" class="login-form">
+            <div class="field">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required>
+            </div>
+
+            <div class="field">
+                <label for="senha">Senha</label>
+                <div class="password-wrap">
+                    <input id="senha" name="senha" type="password" placeholder="••••••••" required>
+                    <button type="button" class="toggle-password" aria-label="Mostrar senha">👁</button>
+                </div>
+            </div>
+
+            <button type="submit" class="primary-btn">Entrar</button>
+        </form>
+
+        <div class="register-link">
+            Ainda não tem conta? <a href="/cadastro">Cadastre-se em breve</a>
+        </div>
+
+        <div th:if="${param.erro != null}" class="alert-error">
+            E-mail ou senha inválidos.
+        </div>
+        <div th:if="${param.sucesso != null}" class="alert-success">
+            Login realizado com sucesso!
+        </div>
+    </div>
+
+    <script th:src="@{/js/modal.js}"></script>
+</body>
+</html>
