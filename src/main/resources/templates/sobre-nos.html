@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sobre Nós — Bom Café</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/script.js}"></script>
+    <header th:replace="~{fragments :: header('sobre')}"></header>
+    <section class="hero">
+        <div class="container">
+            <p class="eyebrow">Sobre nós</p>
+            <h1>Uma paixão por café com propósito.</h1>
+            <p>O Bom Café nasceu para aproximar pessoas da origem, do processo e do sabor que existem antes da xícara.
+            </p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container two-col"><img class="image" th:src="@{/img/plantation.jpg}" alt="Plantação de café">
+            <div class="prose">
+                <h2 style="font-size:34px">Por que existimos</h2>
+                <p>Queremos tornar o universo do café mais simples, acessível e interessante. Acreditamos que conhecer a
+                    origem e o processo ajuda cada pessoa a fazer escolhas melhores para o próprio paladar.</p>
+                <p>Por isso reunimos informação clara e uma seleção de cafés que respeita produtores, processos e
+                    características de cada região.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section surface">
+        <div class="container grid grid-3">
+            <article class="card">
+                <h3>Transparência</h3>
+                <p>Valorizamos informações claras sobre origem, processo e torra.</p>
+            </article>
+            <article class="card">
+                <h3>Respeito</h3>
+                <p>Reconhecemos o trabalho de quem cultiva e transforma cada grão.</p>
+            </article>
+            <article class="card">
+                <h3>Curiosidade</h3>
+                <p>Queremos incentivar novas descobertas em cada preparo.</p>
+            </article>
+        </div>
+    </section>
+    <footer th:replace="~{fragments :: footer}"></footer>
+</body>
+
+</html>

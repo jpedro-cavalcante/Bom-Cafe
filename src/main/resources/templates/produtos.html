@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Produtos — Bom Café</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/script.js}"></script>
+    <header th:replace="~{fragments :: header('produtos')}"></header>
+    <section class="section">
+        <div class="container">
+
+            <!-- CAFÉS -->
+            <div class="product-hub">
+                <p class="eyebrow">☕ Cafés</p>
+                <h2>Cafés</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Cafés'}">
+
+                        <div class="body">
+                            <p class="eyebrow" th:text="${produto.torra}">
+                                Café
+                            </p>
+
+                            <h3 th:text="${produto.nome}">
+                                Café Expresso
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Intenso, aromático e encorpado.
+                            </p>
+
+                            <p>
+                                <strong>Ingredientes:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                Café especial 100% arábica
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 7,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar café
+                                </button>
+
+                            </form>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- BEBIDAS -->
+            <div class="product-hub">
+                <p class="eyebrow">🥤 Bebidas</p>
+                <h2>Bebidas</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Bebidas'}">
+
+                        <div class="body">
+
+                            <p class="eyebrow" th:text="${produto.torra}">
+                                Bebida
+                            </p>
+
+                            <h3 th:text="${produto.nome}">
+                                Café Gelado
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Refrescante e aromático.
+                            </p>
+
+                            <p>
+                                <strong>Ingredientes:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                Café, leite e gelo
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 18,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- ALIMENTOS -->
+            <div class="product-hub">
+                <p class="eyebrow">🥐 Alimentos</p>
+                <h2>Alimentos</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Alimentos'}">
+
+                        <div class="body">
+
+                            <p class="eyebrow" th:text="${produto.torra}">
+                                Alimento
+                            </p>
+
+                            <h3 th:text="${produto.nome}">
+                                Pão de queijo
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Tradicional e macio.
+                            </p>
+
+                            <p>
+                                <strong>Ingredientes:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                Polvilho, queijo, leite, ovos e óleo
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 10,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- LANCHES SALGADOS -->
+            <div class="product-hub">
+                <p class="eyebrow">🥪 Lanches salgados</p>
+                <h2>Lanches Salgados</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Lanches Salgados'}">
+
+                        <div class="body">
+
+                            <p class="eyebrow">Lanche</p>
+
+                            <h3 th:text="${produto.nome}">
+                                Empada
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Massa delicada com recheio cremoso.
+                            </p>
+
+                            <p>
+                                <strong>Ingredientes:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                Massa, frango e requeijão
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 10,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- SOBREMESAS -->
+            <div class="product-hub">
+                <p class="eyebrow">🍰 Sobremesas</p>
+                <h2>Sobremesas</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Sobremesas'}">
+
+                        <div class="body">
+
+                            <p class="eyebrow">Doce</p>
+
+                            <h3 th:text="${produto.nome}">
+                                Palha Italiana
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Doce cremoso com pedaços de biscoito.
+                            </p>
+
+                            <p>
+                                <strong>Ingredientes:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                Leite condensado, chocolate, manteiga e biscoito
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 9,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- OPÇÕES SAUDÁVEIS -->
+            <div class="product-hub">
+                <p class="eyebrow">🍓 Opções saudáveis</p>
+                <h2>Opções Saudáveis</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Opções Saudáveis'}">
+
+                        <div class="body">
+
+                            <p class="eyebrow">Saudável</p>
+
+                            <h3 th:text="${produto.nome}">
+                                Salada de frutas
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Frutas frescas e leves.
+                            </p>
+
+                            <p>
+                                <strong>Ingredientes:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                Frutas da estação
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 15,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+
+            <!-- PRODUTOS PARA VENDA -->
+            <div class="product-hub">
+                <p class="eyebrow">🛍️ Para levar</p>
+                <h2>Produtos para Venda</h2>
+
+                <div class="grid grid-3">
+
+                    <article class="card product-card"
+                             th:each="produto : ${produtos}"
+                             th:if="${produto.categoria == 'Produtos para Venda'}">
+
+                        <div class="body">
+
+                            <p class="eyebrow">Produto</p>
+
+                            <h3 th:text="${produto.nome}">
+                                Grãos de café especiais
+                            </h3>
+
+                            <p th:text="${produto.descricao}">
+                                Grãos selecionados para preparar em casa.
+                            </p>
+
+                            <p>
+                                <strong>Composição:</strong>
+                                <span th:text="${produto.ingredientes}">
+                                100% grãos de café especial
+                            </span>
+                            </p>
+
+                            <div class="price"
+                                 th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">
+                                R$ 42,00
+                            </div>
+
+                            <form th:action="@{/produtos/{id}/selecionar(id=${produto.id})}"
+                                  method="post">
+
+                                <button class="btn btn-primary"
+                                        type="submit"
+                                        style="margin-top:18px;width:100%">
+                                    Selecionar
+                                </button>
+
+                            </form>
+
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer th:replace="~{fragments :: footer}"></footer>
+    <div id="toast" class="toast"></div>
+    <div th:replace="~{fragments :: alerts}"></div>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bom Café</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/script.js}"></script>
+    <header th:replace="~{fragments :: header('home')}"></header>
+    <section class="hero">
+        <div class="container" style="text-align:center">
+            <p class="eyebrow">Torra artesanal • Origem rastreada</p>
+            <h1>Mais do que uma bebida.<br><span style="color:#d9bd79">Uma história em cada xícara.</span></h1>
+            <p style="margin:20px auto">Descubra o verdadeiro significado de um Bom Café.</p>
+            <div class="actions" style="justify-content:center"><a class="btn btn-gold" th:href="@{/produtos}">Explorar
+                    Cafés →</a><a class="btn btn-outline" th:href="@{/historia-do-cafe}"
+                    style="color:white;border-color:#cfc3b2">Saiba Mais</a></div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container two-col">
+            <div>
+                <p class="eyebrow">Bem-vindo</p>
+                <h2 style="font-size:36px;margin-top:12px">Bem-vindo ao Bom Café</h2>
+                <p class="prose">Tudo começou com uma pergunta simples: o que realmente faz um café ser um Bom Café?
+                    Nascemos para aproximar as pessoas do universo do café e mostrar que existe muito mais por trás de
+                    uma simples xícara.</p>
+                <p class="prose">Aqui você encontra informação confiável, linguagem acessível e cafés escolhidos com
+                    respeito por cada etapa da jornada do grão.</p><a class="btn btn-outline"
+                    th:href="@{/sobre-nos}">Conheça nossa história →</a>
+            </div>
+            <div class="grid grid-2"><img class="image" th:src="@{/img/plantation.jpg}" alt="Plantação de café"><img
+                    class="image" th:src="@{/img/roasting.jpg}" alt="Grãos sendo torrados"></div>
+        </div>
+    </section>
+    <section class="section surface">
+        <div class="container">
+            <div style="text-align:center">
+                <p class="eyebrow">Nossos pilares</p>
+                <h2 style="font-size:36px;margin-top:12px">Por que Bom Café?</h2>
+            </div>
+            <div class="grid grid-3" style="margin-top:45px">
+                <article class="card">
+                    <div style="font-size:30px">☕</div>
+                    <h3>Qualidade</h3>
+                    <p>Grãos que respeitam sua origem, seu processo e quem cultiva. Sem atalhos, sem amargor sem
+                        propósito.</p>
+                </article>
+                <article class="card">
+                    <div style="font-size:30px">📖</div>
+                    <h3>Conhecimento</h3>
+                    <p>Informação clara e acessível sobre cultivo, torra, moagem e preparo — para escolher com
+                        confiança.</p>
+                </article>
+                <article class="card">
+                    <div style="font-size:30px">✦</div>
+                    <h3>Experiência</h3>
+                    <p>Café não precisa ser um hábito amargo. Pode ser descoberta, sabor e um momento seu.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <p class="eyebrow">Seleção da casa</p>
+            <h2 style="font-size:36px;margin-top:12px">Destaques de Produtos</h2>
+            <div class="grid grid-3" style="margin-top:35px">
+                <article class="card product-card" th:each="produto, stat : ${produtos}" th:if="${stat.index < 3}">
+                    <div class="product-art">☕</div>
+                    <div class="body">
+                        <p class="eyebrow" th:text="${produto.torra}">Torra média</p>
+                        <h3 th:text="${produto.nome}">Cerrado Mineiro</h3>
+                        <p th:text="${produto.descricao}">Chocolate, caramelo, castanha</p>
+                        <div class="price" th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">R$ 42,00</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="hero">
+        <div class="container carousel">
+            <p class="eyebrow" style="text-align:center">Quem já provou</p>
+            <blockquote class="quote" id="quote">“Eu comprava café pelo preço. Depois do Bom Café, passei a olhar a
+                origem e a torra — e minha manhã mudou completamente.”</blockquote>
+            <p style="text-align:center;color:#d9bd79;font-weight:700" id="author">Marina Alves</p>
+            <div class="carousel-controls"><button class="icon-btn" onclick="changeQuote(-1)">←</button><button
+                    class="icon-btn" onclick="changeQuote(1)">→</button></div>
+        </div>
+        <script th:inline="none">
+            const qs = [
+                ['Eu comprava café pelo preço. Depois do Bom Café, passei a olhar a origem e a torra — e minha manhã mudou completamente.', 'Marina Alves'],
+                ['As explicações são simples e diretas. Aprendi a moer na hora e finalmente entendi por que meu café era amargo.', 'Rafael Souza'],
+                ['O Cerrado Mineiro virou item fixo em casa. Doce, equilibrado e com uma história bonita por trás.', 'Juliana Prado']
+            ];
+
+            let qi = 0;
+
+            function changeQuote(d) {
+                qi = (qi + d + qs.length) % qs.length;
+                quote.textContent = '“' + qs[qi][0] + '”';
+                author.textContent = qs[qi][1];
+            }
+        </script>
+    <div id="toast" class="toast"></div>
+    <div th:replace="~{fragments :: alerts}"></div>
+
+</body>
+
+</html>

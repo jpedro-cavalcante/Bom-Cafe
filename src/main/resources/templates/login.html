@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Entrar — Bom Café</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/script.js}"></script>
+    <header th:replace="~{fragments :: header('login')}"></header>
+
+    <section class="section">
+        <div class="container">
+            <div class="card form-card">
+                <div style="text-align:center">
+                    <div class="brand-mark" style="margin:auto">☕</div>
+                    <h1 style="margin-top:18px">Entrar</h1>
+                    <p class="prose">Bom te ver de novo. Sua próxima xícara está esperando.</p>
+                </div>
+                <form class="login-form" th:action="@{/login}" method="post">
+                    <div class="field"><label>E-mail</label><input name="email" type="email" required autocomplete="email"></div>
+                    <div class="field"><label>Senha</label><input name="senha" id="senhaLogin" type="password" required
+                            autocomplete="current-password"></div>
+                    <div style="text-align:right"><button type="button" class="btn btn-outline"
+                            onclick="toast('Informe seu e-mail para recuperar a senha.')">Esqueci minha senha</button>
+                    </div>
+                    <button class="btn btn-primary" type="submit" style="width:100%;margin-top:15px">Entrar</button>
+                </form>
+                <div style="text-align:center;margin:24px 0;color:#766e65">ou</div>
+                <button class="btn btn-outline" style="width:100%"
+                    onclick="toast('Login com Google selecionado.')">Continuar com Google</button>
+                <p style="text-align:center;margin-top:24px">Não tem uma conta? <a th:href="@{/cadastro}"
+                        style="font-weight:700">Criar conta</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer th:replace="~{fragments :: footer}"></footer>
+    <div id="toast" class="toast"></div>
+    <div th:replace="~{fragments :: alerts}"></div>
+</body>
+
+</html>

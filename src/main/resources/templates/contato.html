@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Contato — Bom Café</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/script.js}"></script>
+    <header th:replace="~{fragments :: header('contato')}"></header>
+
+    <header class="hero center">
+        <div class="container">
+            <p class="eyebrow">Contato</p>
+            <h1>Vamos conversar sobre café</h1>
+            <p style="margin:20px auto">Conte o que você costuma tomar e como prepara. A gente ajuda a encontrar o café
+                ideal.</p>
+        </div>
+    </header>
+    <section class="section">
+        <div class="container two-col">
+            <div>
+                <div class="card">
+                    <div style="font-size:28px">✉</div>
+                    <p class="eyebrow">E-mail</p>
+                    <h3>contato@bomcafe.com.br</h3>
+                </div>
+                <div class="card" style="margin-top:16px">
+                    <div style="font-size:28px">☎</div>
+                    <p class="eyebrow">Telefone</p>
+                    <h3>(11) 4000-0000</h3>
+                </div>
+                <div class="card" style="margin-top:16px">
+                    <div style="font-size:28px">⌖</div>
+                    <p class="eyebrow">Endereço</p>
+                    <h3>São Paulo, SP — Brasil</h3>
+                </div>
+            </div>
+            <form class="card form-card" th:action="@{/contato}" th:object="${contato}" method="post">
+                <h2>Envie sua mensagem</h2>
+                <div class="field"><label>Nome</label><input th:field="*{nome}" required></div>
+                <div class="field"><label>E-mail</label><input th:field="*{email}" type="email" required></div>
+                <div class="field"><label>Assunto</label><input th:field="*{assunto}" required></div>
+                <div class="field"><label>Mensagem</label><textarea th:field="*{mensagem}" required></textarea></div>
+                <button class="btn btn-primary" type="submit" style="width:100%">Enviar mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer th:replace="~{fragments :: footer}"></footer>
+    <div id="toast" class="toast"></div>
+    <div th:replace="~{fragments :: alerts}"></div>
+</body>
+
+</html>

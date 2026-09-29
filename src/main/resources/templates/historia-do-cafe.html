@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>História do Café — Bom Café</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <script th:src="@{/js/script.js}"></script>
+    <header th:replace="~{fragments :: header('historia')}"></header>
+    <section class="hero">
+        <div class="container">
+            <p class="eyebrow">Conhecimento</p>
+            <h1>História do Café</h1>
+            <p>Da origem às técnicas modernas, descubra o caminho que transforma um fruto em uma xícara.</p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container two-col">
+            <div class="prose">
+                <p class="eyebrow">Origem no mundo</p>
+                <h2 style="font-size:34px;margin:12px 0">Da Etiópia para o mundo</h2>
+                <p>A história do café está ligada às terras altas da Etiópia, onde a planta Coffea cresce naturalmente.
+                    Seu consumo se espalhou pelo Iêmen e depois por diferentes regiões do mundo.</p>
+                <p>Ao longo dos séculos, cultivo, comércio, torra e preparo foram transformando a bebida e criando
+                    culturas próprias em cada lugar.</p>
+            </div><img class="image" th:src="@{/img/plantation.jpg}" alt="Cultivo de café">
+        </div>
+    </section>
+    <section class="section surface">
+        <div class="container">
+            <p class="eyebrow">Espécies</p>
+            <h2 style="font-size:34px;margin:12px 0">Tipos de café</h2>
+            <div class="grid grid-3" style="margin-top:30px">
+                <article class="card">
+                    <h3>Arábica</h3>
+                    <p>Conhecido por aromas complexos, acidez equilibrada e grande diversidade de sabores.</p>
+                </article>
+                <article class="card">
+                    <h3>Robusta</h3>
+                    <p>Apresenta corpo mais intenso, maior amargor e resistência natural da planta.</p>
+                </article>
+                <article class="card">
+                    <h3>Variedades</h3>
+                    <p>Dentro das espécies existem muitas variedades, cada uma influenciada por genética, ambiente e
+                        manejo.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container prose">
+            <p class="eyebrow">Do campo</p>
+            <h2 style="font-size:34px;margin:12px 0">Cultivo e colheita</h2>
+            <div class="grid grid-2" style="margin-top:30px">
+                <div class="card">
+                    <h3>Altitude e clima</h3>
+                    <p>Temperatura, altitude, solo e chuva influenciam o desenvolvimento e o perfil final dos grãos.</p>
+                </div>
+                <div class="card">
+                    <h3>Colheita</h3>
+                    <p>Frutos maduros podem ser selecionados manualmente ou por métodos mecanizados, conforme a região e
+                        o cultivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section surface">
+        <div class="container prose">
+            <p class="eyebrow">Depois da colheita</p>
+            <h2 style="font-size:34px;margin:12px 0">Métodos de processamento</h2>
+            <div class="grid grid-3" style="margin-top:30px">
+                <div class="card">
+                    <h3>Natural</h3>
+                    <p>O fruto seca inteiro, preservando características doces e frutadas.</p>
+                </div>
+                <div class="card">
+                    <h3>Lavado</h3>
+                    <p>A polpa é removida antes da secagem, resultando frequentemente em uma xícara mais limpa.</p>
+                </div>
+                <div class="card">
+                    <h3>Honey</h3>
+                    <p>Parte da mucilagem permanece no fruto durante a secagem, equilibrando doçura e limpeza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container two-col">
+            <div class="prose">
+                <p class="eyebrow">Calor e tempo</p>
+                <h2 style="font-size:34px;margin:12px 0">Torra e seus efeitos</h2>
+                <p>A torra modifica aromas, corpo, acidez e amargor. Torras mais claras tendem a preservar mais
+                    características de origem; torras mais escuras desenvolvem notas intensas e tostadas.</p>
+            </div><img class="image" th:src="@{/img/roasting.jpg}" alt="Torra de café">
+        </div>
+    </section>
+    <section class="section surface">
+        <div class="container prose">
+            <p class="eyebrow">Na sua cozinha</p>
+            <h2 style="font-size:34px;margin:12px 0">Métodos de preparo</h2>
+            <div class="grid grid-3" style="margin-top:30px">
+                <div class="card">
+                    <h3>Prensa francesa</h3>
+                    <p>Imersão e filtragem por tela, com corpo marcante.</p>
+                </div>
+                <div class="card">
+                    <h3>V60</h3>
+                    <p>Filtragem manual que destaca clareza e nuances.</p>
+                </div>
+                <div class="card">
+                    <h3>Espresso</h3>
+                    <p>Extração sob pressão, concentrada e intensa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer th:replace="~{fragments :: footer}"></footer>
+</body>
+
+</html>
