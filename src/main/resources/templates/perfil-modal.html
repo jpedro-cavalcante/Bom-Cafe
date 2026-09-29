@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bom Café | Perfil</title>
+    <link rel="stylesheet" th:href="@{/css/modal.css}">
+</head>
+<body class="profile-page">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="avatar-wrap">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Usuário">
+            </div>
+        </div>
+
+        <div class="profile-body">
+            <div class="top-label">SEU PERFIL</div>
+
+            <h2 th:text="${usuario.nome}">João Pedro</h2>
+
+            <div class="user-email">
+                ✉ <span th:text="${usuario.email}">joao@exemplo.com</span>
+            </div>
+
+            <div class="profile-stats">
+                <button type="button" class="stat-btn" data-modal-target="favoritos">
+                    <span class="icon">♡</span>
+                    <strong th:text="${favoritos.size()}">0</strong>
+                    <small>Favoritos</small>
+                </button>
+
+                <button type="button" class="stat-btn" data-modal-target="pedidos">
+                    <span class="icon">🧾</span>
+                    <strong th:text="${pedidos.size()}">0</strong>
+                    <small>Pedidos recentes</small>
+                </button>
+            </div>
+
+            <a href="/logout" class="logout-btn">
+                ↩ Sair da conta
+            </a>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="favoritos">
+        <div class="custom-modal">
+            <div class="modal-header">
+                <button class="tab-btn active" type="button" data-tab="favoritos-panel">Favoritos</button>
+                <button class="tab-btn" type="button" data-tab="pedidos-panel">Pedidos</button>
+                <button class="modal-close" type="button" aria-label="Fechar">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="favoritos-panel" class="tab-panel active">
+                    <div th:if="${favoritos.isEmpty()}" class="empty-state">
+                        <p>Nenhum favorito ainda</p>
+                    </div>
+
+                    <div th:each="produto : ${favoritos}" class="drink-item">
+                        <div class="drink-icon">☕</div>
+                        <div class="drink-info">
+                            <strong th:text="${produto.nome}">Cappuccino clássico</strong>
+                            <small th:text="${produto.descricao}">Expresso, leite vaporizado e espuma</small>
+                        </div>
+                        <div class="drink-price" th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 2)}">R$ 14,00</div>
+                    </div>
+                </div>
+
+                <div id="pedidos-panel" class="tab-panel hidden">
+                    <div th:if="${pedidos.isEmpty()}" class="empty-state">
+                        <p>Nenhum pedido ainda</p>
+                    </div>
+
+                    <div th:each="pedido : ${pedidos}" class="order-item">
+                        <div class="order-header">
+                            <strong th:text="'Pedido #' + ${pedido.id}">Pedido #1042</strong>
+                            <span class="badge" th:text="${pedido.status}">A caminho</span>
+                        </div>
+                        <div class="order-meta" th:text="${#dates.format(pedido.dataPedido, 'dd MMM yyyy')}">27 set 2026</div>
+                        <div class="order-name" th:text="${pedido.descricao}">Cappuccino grande · Pão de queijo</div>
+                        <div class="order-price" th:text="${'R$ ' + #numbers.formatDecimal(pedido.total, 1, 2)}">R$ 24,50</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/modal.js}"></script>
+</body>
+</html>
